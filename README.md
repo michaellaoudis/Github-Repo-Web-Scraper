@@ -1,7 +1,7 @@
 # Github Repository Web Scraper
 
 #### **Disclaimer**:
-- This tool is intended to be used ethically towards Github Profiles with the intent of reporting sensitively stored public information to the Github Profile Owner
+- This tool was created for ethical use towards Github Profiles with the intent of reporting sensitively stored public information to the Github Profile Owner
 - If sensitive information is discovered using this tool, the author, Michael Laoudis, assumes no responsibility or liability for the actions of any parties having utilized it
 - For Bug Bounty Programs, abide by the set scope and only use this tool on company or developer related profiles if permitted
 
