@@ -29,7 +29,7 @@ For example, let's say I wanted to search through repositories for only JavaScri
         pip install selenium
 
 5. Text Files: `sensitive-keywords.txt`, `target-filetypes.txt`
-6. After storing the program files locally, in `github-web-scraper.py`, alter the variables `fileTypesFilePath` and `keywordsFilePath` to reflect where you stored the text files referenced in Dependencies (4)
+6. After storing the program files locally, in `github-web-scraper.py`, alter the variables `fileTypesFilePath` and `keywordsFilePath` to reflect where you stored the text files referenced in Dependencies (5)
 
 
 Example:
