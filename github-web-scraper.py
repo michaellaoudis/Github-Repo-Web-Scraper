@@ -1,12 +1,13 @@
 # Github Repository Web Scraper
+# Built by Michael Laoudis
 # ------------------------------------------------------------------------------------
 #   To run this tool, usage is as follows: "python filePath "targetUrl""
 #       Example Usage:  python D:\\Recon\\github-web-scraper.py "https://github.com/michaellaoudis"
 # ------------------------------------------------------------------------------------
 #   For using a local path of Selenium instead:
 #       from fileinput import filename
-#       cdp = 'D:\\Projects\\Bug-Bounty\\Dev-Tools\\chromedriver_win32\\chromedriver.exe'                               # Chrome Driver path
-#       driver = webdriver.Chrome(executable_path=cdp, options=options)                                                 # Use Google Chrome for this tool
+#       cdp = 'D:\\Projects\\Bug-Bounty\\Dev-Tools\\chromedriver_win32\\chromedriver.exe'                            # Chrome Driver path
+#       driver = webdriver.Chrome(executable_path=cdp, options=options)                                              # Use Google Chrome for this tool
 # ------------------------------------------------------------------------------------
 
 from selenium import webdriver
@@ -25,22 +26,22 @@ driver = webdriver.Chrome(service=s, options=options)                           
 
 def get_Raw_Contents(fileLink, keywordsPayload):
     driver.get(fileLink)
-    raw = driver.find_element(By.ID, "raw-url").click()                                             # Click on 'Raw' button
+    raw = driver.find_element(By.ID, "raw-url").click()                                                             # Click on 'Raw' button
     time.sleep(2)
 
-    html = driver.page_source.lower()                                                                       # Scrape page source
+    html = driver.page_source.lower()                                                                               # Scrape page source
     html = f"{html}"
 
     for fileLine in html.split("\n"):
         for keyword in keywordsPayload:
             if keyword in fileLine:
                 print(f"(+) Keyword \"{keyword}\" found at: {fileLink}")
-                print(f"\n(-) Here's the text: \n\"{fileLine}\"\n")
+                print(f"(-) Here's the text: \n\"{fileLine}\"\n")
 
 def get_Repo_Files(repo_link, fileTypesPayload, keywordsPayload):
     
-    driver.get(repo_link)                                                                           # e.g. https://github.com/michaellaoudis/Python
-    fileLinks = []                                                                                  # Stores URL links to each file in the repository
+    driver.get(repo_link)                                                                                             # e.g. https://github.com/michaellaoudis/Python
+    fileLinks = []                                                                                                    # Stores URL links to each file in the repository
 
     #Identify each file in repository
     scrapedFiles = driver.find_elements(by=By.XPATH, value="//a[@class='js-navigation-open Link--primary']")
@@ -53,7 +54,7 @@ def get_Repo_Files(repo_link, fileTypesPayload, keywordsPayload):
         # Check if repository file is a folder
         if "/tree/" in url:
             driver.get(str(url))
-            time.sleep(2)
+            time.sleep(3)
             scrapedSubFiles = driver.find_elements(by=By.XPATH, value="//a[@class='js-navigation-open Link--primary']")
             for subFile in scrapedSubFiles:
                 fileLinks.append(subFile.get_attribute("href"))
@@ -68,13 +69,13 @@ def get_Repo_Files(repo_link, fileTypesPayload, keywordsPayload):
 # In Repositories tab, identify all repos and set up valid URLs so program can scrape each of them
 def identifyRepos(targetUrl, fileTypesPayload, keywordsPayload):
     driver.get(f"{targetUrl}")                                     # Github page to scrape
-    repoTab = driver.find_element(By.PARTIAL_LINK_TEXT, "Repositories")                                  # Click Repositories tab
+    repoTab = driver.find_element(By.PARTIAL_LINK_TEXT, "Repositories")                                             # Click Repositories tab
     repoTab.click()
     time.sleep(3)
-    scrapedRepos = driver.find_elements(By.XPATH, "//a[@itemprop='name codeRepository']")                # Scrapes all repository listings
+    scrapedRepos = driver.find_elements(By.XPATH, "//a[@itemprop='name codeRepository']")                           # Scrapes all repository listings
     
-    repoNames = []                                                                                       # Stores all identified repo names from 'Repositories' tab
-    repoLinks = []                                                                                       # Stores URL links to each repo
+    repoNames = []                                                                                                  # Stores all identified repo names from 'Repositories' tab
+    repoLinks = []                                                                                                  # Stores URL links to each repo
 
     # # Store repository names in list <repoNames>
     for repo in scrapedRepos:
@@ -82,9 +83,9 @@ def identifyRepos(targetUrl, fileTypesPayload, keywordsPayload):
     
     # # Add the repo name to our starting URL and store as a full path in <repo_link>. Append multiple <repo_link> to list <repoLinks>
     for name in repoNames:
-        repo_link = f"{targetUrl}/{name}"                                                                 # e.g. https://github.com/michaellaoudis/Python                             
+        repo_link = f"{targetUrl}/{name}"                                                                           # e.g. https://github.com/michaellaoudis/Python                             
         repoLinks.append(repo_link)                                             
-        get_Repo_Files(repo_link, fileTypesPayload, keywordsPayload)                                     # Call function <get_Repo_Files> and pass along (repository link, target file types, sensitive keywords)                                                     
+        get_Repo_Files(repo_link, fileTypesPayload, keywordsPayload)                                                # Call function <get_Repo_Files> and pass along (repository link, target file types, sensitive keywords)                                                     
 
 # Set up targeted file types (txt file) to scrape for
 def fileTypes_File(targetUrl, keywordsPayload):
@@ -97,7 +98,7 @@ def fileTypes_File(targetUrl, keywordsPayload):
     for filetype in file:
         filetype = filetype.strip('\n')
         fileTypesPayload.append(filetype)
-    identifyRepos(targetUrl, fileTypesPayload, keywordsPayload)                                                     # Call function <identifyRepos> and pass along (target file types, sensitive keywords)
+    identifyRepos(targetUrl, fileTypesPayload, keywordsPayload)                                                     # Call function <identifyRepos> and pass along (target url, target file types, sensitive keywords)
     fileTypesFile.close()
 
 # Set up sensitive keywords (txt file) to scrape for
@@ -109,7 +110,7 @@ def keywords_File(targetUrl):
     for keyword in file:
         keyword = keyword.strip('\n').lower()
         keywordsPayload.append(keyword)
-    fileTypes_File(targetUrl, keywordsPayload)                                                                      # Call function <fileTypes_File> and pass along (sensitive keywords)                                                                         
+    fileTypes_File(targetUrl, keywordsPayload)                                                                      # Call function <fileTypes_File> and pass along (target url, sensitive keywords)                                                                         
     keywordsFile.close()
 
 def main():

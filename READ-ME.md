@@ -8,24 +8,31 @@
 ## Description
 <hr>
 
+The `Github Repository Web Scraper` is a reconnaissance tool used to perform information gathering (passive foot-printing) on Github profiles' public repositories. A malicious attacker would find value in discovering sensitive information publicly stored by developers. Information disclosure of test credentials or cryptographic keys left in code could lead to escalated attacks against the victim.
+
+Having been given a target Github profile URL, this tool will recursively scrape every public folder and file in every repository for your desired file types and matching text. 
+
+For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manually scanning, I would edit the dependency text files referenced below and execute the tool to retrieve the results in seconds.
 
 ## Dependencies
 <hr>
 
-1. Programming Language: `Python`
+1. Programming Language: `Python3`
+2. Browser: `Google Chrome`
 
-2. Install `Webdriver Manager`
+3. Install `Webdriver Manager`
 
-        pip install webdriver-manager
+        pip install webdriver_manager
 
-3. Install `Selenium` 
+4. Install `Selenium` 
 
         pip install selenium
 
-3. Text Files: `sensitive-keywords.txt`, `target-filetypes.txt`
-4. After storing the program files locally, in `github-web-scraper.py`, alter the variables `fileTypesFilePath` and `keywordsFilePath` to reflect where you stored the text files referenced in Dependencies (4)
+5. Text Files: `sensitive-keywords.txt`, `target-filetypes.txt`
+6. After storing the program files locally, in `github-web-scraper.py`, alter the variables `fileTypesFilePath` and `keywordsFilePath` to reflect where you stored the text files referenced in Dependencies (4)
 
-- Example:
+
+Example:
 
 
         fileTypesFilePath = 'D:\\Projects\\Python\\WebAppSec\\Github-Repo-Web-Scraper\\target-filetypes.txt'
@@ -36,12 +43,41 @@
 <hr>
 
 1. To run the program, syntax is as follows:  
-`python file_path\github-web-scraper.py`
+`python \path\github-web-scraper.py "https://exampleGitProfile.com"`
 
-- Example:
 
-        python D:\Github-Repo-Web-Scraper\github-web-scraper.py
+Example:
 
-2. 
+        python D:\Github-Repo-Web-Scraper\github-web-scraper.py "https://github.com/michaellaoudis"
 
+<hr>
+
+2. To filter for specific file types against your target's repositories:
+- Edit the `target-filetypes.txt` file
+- Each file type should rest on its own line in format `".extension"`
+
+Example:
+
+        .js
+        .py
+        .json
+        .php
+
+<hr>
+
+3. To filter for specific keywords against your target's repositories:
+- Edit the `sensitive-keywords.txt` file
+- Each keyword should rest on its own line
+
+Example:
+
+        username
+        password
+        key
+- **This tool searches for case-insensitive matching strings**
+- Keyword `"UsER"` will be converted to -> `"user"` at runtime
+- Similarly, the target's files will be scraped then converted to lower-case for matching against your desired keywords
+- Special characters are accepted
+
+<hr>
 
