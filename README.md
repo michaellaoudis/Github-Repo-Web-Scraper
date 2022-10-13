@@ -43,6 +43,7 @@ Example:
 <hr>
 
 1. To run the program, syntax is as follows:  
+
 `python \path\github-web-scraper.py "https://exampleGitProfile.com"`
 
 
