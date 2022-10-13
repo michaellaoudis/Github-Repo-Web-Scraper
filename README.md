@@ -12,7 +12,7 @@ The `Github Repository Web Scraper` is a reconnaissance tool used to perform inf
 
 Having been given a target Github profile URL, this tool will recursively scrape every public folder and file in every repository for your desired file types and matching text. 
 
-For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manually scanning, I would edit the dependency text files referenced below and execute the tool to retrieve the results in seconds.
+For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manual scanning, I would edit the dependency text files referenced below to search for ".js" files with the keyword "password" - then execute the tool to retrieve these results in seconds.
 
 ## Dependencies
 <hr>
