@@ -1,0 +1,6 @@
+.js
+.py
+.json
+.html
+.css
+.php
