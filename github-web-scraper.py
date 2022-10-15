@@ -120,7 +120,7 @@ def main():
         sys.exit(-1)                                                     # Exit program
     
     targetUrl = sys.argv[1]
-    print("(+) Scraping GitHub profile...")
+    print("(+) Scraping GitHub profile...\n")
     keywords_File(targetUrl)
    
 if __name__ == "__main__":
