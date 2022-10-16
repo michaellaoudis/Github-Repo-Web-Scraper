@@ -4,8 +4,7 @@
 - This tool is intended to be used ethically towards Github Profiles with the intent of reporting sensitively stored public information to the Github Profile Owner
 - If sensitive information is discovered using this tool, the author, Michael Laoudis, assumes no responsibility or liability for the actions of any parties having utilized it
 - For Bug Bounty Programs, abide by the set scope and only use this tool on company or developer related profiles if permitted
-<br/><br/>
-<hr>
+<hr><br>
 
 ## Description
 
@@ -14,8 +13,8 @@ The `Github Repository Web Scraper` is a reconnaissance tool used to perform inf
 Having been given a target Github profile URL, this tool will recursively scrape every public folder and file in every repository for your desired file types and matching text. 
 
 For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manually scanning, I would edit the dependency text files referenced below and execute the tool to retrieve the results in seconds.
-<br/><br/>
-<hr>
+
+<hr><br>
 
 ## Dependencies
 
@@ -39,8 +38,8 @@ Example:
         fileTypesFilePath = 'D:\\Projects\\Python\\WebAppSec\\Github-Repo-Web-Scraper\\target-filetypes.txt'
 
         keywordsFilePath = 'D:\\Projects\\Python\\WebAppSec\\Github-Repo-Web-Scraper\\sensitive-keywords.txt'
-<br/><br/>
-<hr>
+
+<hr><br>
 
 ## Usage 
 
@@ -81,9 +80,11 @@ Example:
 - Similarly, the target's files will be scraped then converted to lower-case for matching against your desired keywords
 - Special characters are accepted <br/><br/>
 
-<hr>
+<hr><br>
 
-## Sample Output <br/><br/>     
+## Sample Output
+<br>
+
         (+) Scraping GitHub profile...
 
         (+) Keyword "password" found at: https://github.com/michaellaoudis/Python/blob/main/Test-Target/Javascript-Target.js
