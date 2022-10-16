@@ -13,12 +13,7 @@ The `Github Repository Web Scraper` is a reconnaissance tool used to perform inf
 
 Having been given a target Github profile URL, this tool will recursively scrape every public folder and file in every repository for your desired file types and matching text. 
 
-<<<<<<< HEAD:READ-ME.md
-For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manually scanning, I would edit the dependency text files referenced below and execute the tool to retrieve the results in seconds.
-<br/><br/>
-=======
-For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manual scanning, I would edit the dependency text files referenced below to search for ".js" files with the keyword "password" - then execute the tool to retrieve these results in seconds.
->>>>>>> 5c3f8b0b21a9880d124975b54be0d5f41bdcc573:README.md
+For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manual scanning, I would edit the dependency text files referenced below to search for ".js" files with the keyword "password" - then execute the tool to retrieve these results in seconds. <br/><br/>
 
 ## Dependencies
 <hr>
@@ -35,12 +30,8 @@ For example, let's say I wanted to search through repositories for only JavaScri
         pip install selenium
 
 5. Text Files: `sensitive-keywords.txt`, `target-filetypes.txt`
-<<<<<<< HEAD:READ-ME.md
-6. After storing the program files locally, in `github-web-scraper.py`, alter the variables `fileTypesFilePath` and `keywordsFilePath` to reflect where you stored the text files referenced in Dependencies (4) <br/><br/>
-=======
-6. After storing the program files locally, in `github-web-scraper.py`, alter the variables `fileTypesFilePath` and `keywordsFilePath` to reflect where you stored the text files referenced in Dependencies (5)
 
->>>>>>> 5c3f8b0b21a9880d124975b54be0d5f41bdcc573:README.md
+6. After storing the program files locally, in `github-web-scraper.py`, alter the variables `fileTypesFilePath` and `keywordsFilePath` to reflect where you stored the text files referenced in Dependencies (5) <br/><br/>
 
 Example:
 
@@ -54,13 +45,7 @@ Example:
 <hr>
 
 1. To run the program, syntax is as follows:  
-<<<<<<< HEAD:READ-ME.md
 `python \path\github-web-scraper.py "https://exampleGitProfile.com"` <br/><br/>
-=======
-
-`python \path\github-web-scraper.py "https://exampleGitProfile.com"`
->>>>>>> 5c3f8b0b21a9880d124975b54be0d5f41bdcc573:README.md
-
 
 Example:
 
@@ -99,7 +84,6 @@ Example:
 - Special characters are accepted <br/><br/>
 
 <hr>
-<<<<<<< HEAD:READ-ME.md
 
 ## Sample Output <br/><br/>     
         (+) Scraping GitHub profile...
