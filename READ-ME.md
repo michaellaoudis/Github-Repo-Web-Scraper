@@ -5,9 +5,9 @@
 - If sensitive information is discovered using this tool, the author, Michael Laoudis, assumes no responsibility or liability for the actions of any parties having utilized it
 - For Bug Bounty Programs, abide by the set scope and only use this tool on company or developer related profiles if permitted
 <br/><br/>
+<hr>
 
 ## Description
-<hr>
 
 The `Github Repository Web Scraper` is a reconnaissance tool used to perform information gathering (passive foot-printing) on Github profiles' public repositories. A malicious attacker would find value in discovering sensitive information publicly stored by developers. Information disclosure of test credentials or cryptographic keys left in code could lead to escalated attacks against the victim.
 
@@ -15,9 +15,9 @@ Having been given a target Github profile URL, this tool will recursively scrape
 
 For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manually scanning, I would edit the dependency text files referenced below and execute the tool to retrieve the results in seconds.
 <br/><br/>
+<hr>
 
 ## Dependencies
-<hr>
 
 1. Programming Language: `Python3`
 2. Browser: `Google Chrome`
@@ -40,19 +40,18 @@ Example:
 
         keywordsFilePath = 'D:\\Projects\\Python\\WebAppSec\\Github-Repo-Web-Scraper\\sensitive-keywords.txt'
 <br/><br/>
-
-## Usage 
 <hr>
 
+## Usage 
+
 1. To run the program, syntax is as follows:  
-`python \path\github-web-scraper.py "https://exampleGitProfile.com"` <br/><br/>
+`python \path\github-web-scraper.py "https://github.com/targetProfile"` <br/><br/>
 
 
 Example:
 
         python D:\Github-Repo-Web-Scraper\github-web-scraper.py "https://github.com/michaellaoudis"
 
-<hr>
 
 2. To filter for specific file types against your target's repositories:
 - Edit the `target-filetypes.txt` file
@@ -64,8 +63,6 @@ Example:
         .py
         .json
         .php
-
-<hr>
 
 3. To filter for specific keywords against your target's repositories:
 - Edit the `sensitive-keywords.txt` file
