@@ -116,6 +116,3 @@ Example:
         (+) Keyword "password" found at: https://github.com/michaellaoudis/Python/blob/main/Test-Target/PHP-Target.php
         (-) Here's the text:
         "in in nunc. class aptent taciti username=mich43l password=l40udi$ sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. donec ullamcorper fringilla eros. fusce in sapien eu purus dapibus commodo. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. cras faucibus condimentum odio. sed ac ligula. aliquam at eros. etiam at ligula et tellus ullamcorper ultrices. in fermentum, lorem non cursus porttitor, diam urna accumsan lacus, sed interdum wisi nibh nec nisl."
-
-=======
->>>>>>> 5c3f8b0b21a9880d124975b54be0d5f41bdcc573:README.md
