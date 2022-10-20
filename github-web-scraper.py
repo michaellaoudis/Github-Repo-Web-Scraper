@@ -6,10 +6,9 @@
 # ------------------------------------------------------------------------------------
 #   For using a local path of Selenium instead:
 #       from fileinput import filename
-#       cdp = 'D:\\Projects\\Bug-Bounty\\Dev-Tools\\chromedriver_win32\\chromedriver.exe'                            # Chrome Driver path
+#       cdp = 'D:\\Projects\\Bug-Bounty\\Dev-Tools\\chromedriver_win32\\chromedriver.exe'                            # Local Path to Chrome Driver downloaded from: https://chromedriver.chromium.org/downloads
 #       driver = webdriver.Chrome(executable_path=cdp, options=options)                                              # Use Google Chrome for this tool
-# ------------------------------------------------------------------------------------
-
+# ------------------------------------------------------------------------------------                               # Check current Chrome version: Open Chrome > Settings > About Chrome
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
@@ -29,10 +28,8 @@ def get_Raw_Contents(fileLink, keywordsPayload):
     driver.get(fileLink)
     raw = driver.find_element(By.ID, "raw-url").click()                                                             # Click on 'Raw' button
     time.sleep(2)
-
     html = driver.page_source.lower()                                                                               # Scrape page source
     html = f"{html}"
-
     for fileLine in html.split("\n"):
         for keyword in keywordsPayload:
             if keyword in fileLine:
@@ -68,7 +65,7 @@ def get_Repo_Files(repo_link, fileTypesPayload, keywordsPayload):
                 if url.endswith(f"{fileType}"):                                                                     # Check if file extension matches your target file type 
                     get_Raw_Contents(url, keywordsPayload)                                                          # If it matches, get the raw html to check for target keywords
 
-# In Repositories tab, identify all repos and set up valid URLs so program can scrape each of them
+# In Repositories tab, identify all repos and set up valid URLs to them for scraping
 def identify_Repos(targetUrl, fileTypesPayload, keywordsPayload):
     driver.get(f"{targetUrl}")                                     # Github page to scrape
     repoTab = driver.find_element(By.PARTIAL_LINK_TEXT, "Repositories")                                             # Click Repositories tab
@@ -91,15 +88,15 @@ def identify_Repos(targetUrl, fileTypesPayload, keywordsPayload):
 def fileTypes_File(targetUrl, keywordsPayload):
     fileTypesFilePath = 'D:\\Projects\\Github-Repo-Web-Scraper\\target-filetypes.txt'
     fileTypesFile = open(fileTypesFilePath, 'r')
-
     file = fileTypesFile.readlines()
     fileTypesPayload = []
-
+    
+    # Collect target file extensions from each line in target-filetypes.txt
     for filetype in file:
         filetype = filetype.strip('\n')
         fileTypesPayload.append(filetype)
-    identify_Repos(targetUrl, fileTypesPayload, keywordsPayload)                                                     # Call function <identifyRepos> and pass along (target url, target file types, sensitive keywords)
     fileTypesFile.close()
+    identify_Repos(targetUrl, fileTypesPayload, keywordsPayload)                                                     # Call function <identifyRepos> and pass along (target url, target file types, sensitive keywords)
 
 # Set up sensitive keywords (txt file) to scrape for
 def keywords_File(targetUrl):
@@ -107,11 +104,13 @@ def keywords_File(targetUrl):
     keywordsFile = open(keywordsFilePath, 'r')                          
     file = keywordsFile.readlines()
     keywordsPayload = []
+    
+    # Collect target keywords from each line in sensitive-keywords.txt
     for keyword in file:
         keyword = keyword.strip('\n').lower()
         keywordsPayload.append(keyword)
-    fileTypes_File(targetUrl, keywordsPayload)                                                                      # Call function <fileTypes_File> and pass along (target url, sensitive keywords)                                                                         
     keywordsFile.close()
+    fileTypes_File(targetUrl, keywordsPayload)                                                                      # Call function <fileTypes_File> and pass along (target url, sensitive keywords)                                                                         
 
 def main():
     if len(sys.argv) !=2:                                                # If program is run without name of program and target URL,
