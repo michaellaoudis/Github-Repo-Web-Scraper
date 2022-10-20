@@ -113,14 +113,14 @@ def keywords_File(targetUrl):
     fileTypes_File(targetUrl, keywordsPayload)                                                                      # Call function <fileTypes_File> and pass along (target url, sensitive keywords)                                                                         
 
 def main():
-    if len(sys.argv) !=2:                                                # If program is run without name of program and target URL,
-        print("(+) Usage: %s <url>" % sys.argv[0])                       # Print usage: (name of program), (url)
-        print("(+) Example: %s www.example.com" % sys.argv[0])
-        sys.exit(-1)                                                     # Exit program
-    
-    targetUrl = sys.argv[1]
-    print("(+) Scraping GitHub profile...\n")
-    keywords_File(targetUrl)
+    try:
+        targetUrl = sys.argv[1]
+        print("(+) Scraping GitHub profile...\n")
+        keywords_File(targetUrl)
+    except:
+        print('(+) An error has occurred. Please check your usage follows the format:\t python %s "https://github.com/targetProfile"' % sys.argv[0])
+        driver.quit()                                                                                               # Close failed Chrome browser
+        sys.exit(-1)                                                                                                # Exit program
    
 if __name__ == "__main__":
     main()

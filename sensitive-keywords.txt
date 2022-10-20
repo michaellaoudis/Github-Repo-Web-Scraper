@@ -1,2 +1,4 @@
-amass
+username
 password
+key
+hidden secret
