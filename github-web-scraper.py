@@ -34,7 +34,7 @@ def get_Raw_Contents(fileLink, keywordsPayload):
         for keyword in keywordsPayload:
             if keyword in fileLine:
                 print(f"(+) Keyword \"{keyword}\" found at: {fileLink}")
-                print(f"(-) Here's the text: \n\"{fileLine}\"\n")
+                print(f"(-) Extracted text: \n\"{fileLine}\"\n")
 
 # Scrape folders recursively for target file extensions
 def get_Repo_Files(repo_link, fileTypesPayload, keywordsPayload):

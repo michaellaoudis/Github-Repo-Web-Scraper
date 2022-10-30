@@ -88,15 +88,15 @@ Example:
         (+) Scraping GitHub profile...
 
         (+) Keyword "password" found at: https://github.com/michaellaoudis/Python/blob/main/Test-Target/Javascript-Target.js
-        (-) Here's the text:
+        (-) Extracted text:
         "in in nunc. class aptent taciti username=michael password=laoudis sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. donec ullamcorper fringilla eros. fusce in sapien eu purus dapibus commodo. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. cras faucibus condimentum odio. sed ac ligula. aliquam at eros. etiam at ligula et tellus ullamcorper ultrices. in fermentum, lorem non cursus porttitor, diam urna accumsan lacus, sed interdum wisi nibh nec nisl."
 
         (+) Keyword "key" found at: https://github.com/michaellaoudis/Python/blob/main/Test-Target/More-Fake-Creds.html
-        (-) Here's the text:
+        (-) Extracted text:
         "donec ut est in lectus consequat consequat. key=michael123 etiam eget dui. aliquam erat volutpat. sed at lorem in nunc porta tristique. proin nec augue. quisque aliquam tempor magna. pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. nunc ac magna. maecenas odio dolor, vulputate vel, auctor ac, accumsan id, felis. pellentesque cursus 
         sagittis felis."        
 
         (+) Keyword "password" found at: https://github.com/michaellaoudis/Python/blob/main/Test-Target/PHP-Target.php
-        (-) Here's the text:
+        (-) Extracted text:
         "in in nunc. class aptent taciti username=mich43l password=l40udi$ sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. donec ullamcorper fringilla eros. fusce in sapien eu purus dapibus commodo. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. cras faucibus condimentum odio. sed ac ligula. aliquam at eros. etiam at ligula et tellus ullamcorper ultrices. in fermentum, lorem non cursus porttitor, diam urna accumsan lacus, sed interdum wisi nibh nec nisl."
 
