@@ -44,7 +44,9 @@ Example:
 ## Usage 
 
 1. To run the program, syntax is as follows:  
-`python \path\github-web-scraper.py "https://github.com/targetProfile"` <br/><br/>
+`python \path\github-web-scraper.py "https://github.com/targetProfile"` 
+
+<br>
 
 
 Example:
@@ -52,11 +54,13 @@ Example:
         python D:\Github-Repo-Web-Scraper\github-web-scraper.py "https://github.com/michaellaoudis"
 
 
-<br>
+<br></br>
 
 2. To filter for specific file types against your target's repositories:
 - Edit the `target-filetypes.txt` file
-- Each file type should rest on its own line in format `".extension"` <br/><br/>
+- Each file type should rest on its own line in format `".extension"` 
+
+<br>
 
 Example:
 
@@ -65,7 +69,7 @@ Example:
         .json
         .php
 
-<br>
+<br></br>
 
 3. To filter for specific keywords against your target's repositories:
 - Edit the `sensitive-keywords.txt` file
@@ -77,7 +81,7 @@ Example:
         password
         key
 
-<br/><br/>
+<br></br>
 
 - **This tool searches for case-insensitive matching strings**
 - Keyword `"UsER"` will be converted to -> `"user"` at runtime
