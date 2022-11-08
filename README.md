@@ -52,6 +52,8 @@ Example:
         python D:\Github-Repo-Web-Scraper\github-web-scraper.py "https://github.com/michaellaoudis"
 
 
+<br>
+
 2. To filter for specific file types against your target's repositories:
 - Edit the `target-filetypes.txt` file
 - Each file type should rest on its own line in format `".extension"` <br/><br/>
@@ -62,6 +64,8 @@ Example:
         .py
         .json
         .php
+
+<br>
 
 3. To filter for specific keywords against your target's repositories:
 - Edit the `sensitive-keywords.txt` file
