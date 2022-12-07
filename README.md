@@ -1,16 +1,16 @@
-# Github Repository Web Scraper
+# GitHub Repository Web Scraper
 
 #### **Disclaimer**:
-- This tool is intended to be used ethically towards Github Profiles with the intent of reporting sensitively stored public information to the Github Profile Owner
+- This tool is intended to be used ethically towards Github Profiles with the intent of reporting sensitively stored public information to the GitHub Profile Owner
 - If sensitive information is discovered using this tool, the author, Michael Laoudis, assumes no responsibility or liability for the actions of any parties having utilized it
 - For Bug Bounty Programs, abide by the set scope and only use this tool on company or developer related profiles if permitted
 <hr><br>
 
 ## Description
 
-The `Github Repository Web Scraper` is a reconnaissance tool used to perform information gathering (passive foot-printing) on Github profiles' public repositories. A malicious attacker would find value in discovering sensitive information publicly stored by developers. Information disclosure of test credentials or cryptographic keys left in code could lead to escalated attacks against the victim.
+The `GitHub Repository Web Scraper` is a reconnaissance tool used to perform information gathering (passive foot-printing) on GitHub profiles' public repositories. A malicious attacker would find value in discovering sensitive information publicly stored by developers. Information disclosure of test credentials or cryptographic keys left in code could lead to escalated attacks against the victim.
 
-Having been given a target Github profile URL, this tool will recursively scrape every public folder and file in every repository for your desired file types and matching text. 
+Having been given a target GitHub profile URL, this tool will recursively scrape every public folder and file in every repository for your desired file types and matching text. 
 
 For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manual scanning, I would edit the dependency text files referenced below and execute the tool to retrieve these results in seconds.
 
