@@ -1,4 +1,7 @@
 username
 password
 key
-hidden secret
+hidden
+secret
+root
+admin
