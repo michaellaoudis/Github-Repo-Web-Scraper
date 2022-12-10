@@ -73,13 +73,14 @@ Example:
 
 3. To filter for specific keywords against your target's repositories:
 - Edit the `sensitive-keywords.txt` file
-- Each keyword should rest on its own line <br/><br/>
+- Each keyword or sentence should rest on its own line <br/><br/>
 
 Example:
 
         username
         password
         key
+        hidden secret
 
 <br></br>
 
