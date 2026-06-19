@@ -4,7 +4,7 @@
 - This tool is intended to be used ethically towards GitHub Profiles with the intent of reporting sensitively stored public information to the GitHub Profile Owner
 - If sensitive information is discovered using this tool, the author, Michael Laoudis, assumes no responsibility or liability for the actions of any parties having utilized it
 - For Bug Bounty Programs, abide by the set scope and only use this tool on company or developer related profiles if permitted
-<hr><br>
+<br>
 
 ## Description
 
@@ -13,99 +13,46 @@ The `GitHub Repository Web Scraper` is a reconnaissance tool used to perform inf
 Having been given a target GitHub profile URL, this tool will recursively scrape every public folder and file in every repository for your desired file types and matching text. 
 
 For example, let's say I wanted to search through repositories for only JavaScript files with lines containing the text "password". Rather than spending hours performing manual scanning, I would edit the dependency text files referenced below and execute the tool to retrieve these results in seconds.
+<br>
 
-<hr><br>
+## Dependency
 
-## Dependencies
-
-1. Programming Language: `Python3`
-2. Browser: `Google Chrome`
-
-3. Install `Webdriver Manager`
-
-        pip install webdriver_manager
-
-4. Install `Selenium` 
-
-        pip install selenium
-
-5. Text Files: `sensitive-keywords.txt`, `target-filetypes.txt`
-6. After storing the program files locally, in `github-web-scraper.py`, alter the variables `fileTypesFilePath` and `keywordsFilePath` to reflect where you stored the text files referenced in Dependencies (5) <br/><br/>
-
-Example:
-
-
-        fileTypesFilePath = 'D:\\Projects\\Python\\WebAppSec\\Github-Repo-Web-Scraper\\target-filetypes.txt'
-
-        keywordsFilePath = 'D:\\Projects\\Python\\WebAppSec\\Github-Repo-Web-Scraper\\sensitive-keywords.txt'
-
-<hr><br>
+        pip3 install requests
 
 ## Usage 
 
-1. To run the program, syntax is as follows:  
-`python \path\github-web-scraper.py "https://github.com/targetProfile"` 
+    python3 github_scraper.py -u <github_username> [-t <token>] [-k keywords.txt] [-e extensions.txt] [-o output.txt]
+    python3 github_scraper.py -u targetorg -t ghp_xxxx -k sensitive-keywords.txt -e target-filetypes.txt
 
-<br>
-
-
-Example:
-
-        python D:\Github-Repo-Web-Scraper\github-web-scraper.py "https://github.com/michaellaoudis"
-
-
-<br></br>
-
-2. To filter for specific file types against your target's repositories:
-- Edit the `target-filetypes.txt` file
-- Each file type should rest on its own line in format `".extension"` 
-
-<br>
-
-Example:
-
-        .js
-        .py
-        .json
-        .php
-
-<br></br>
-
-3. To filter for specific keywords against your target's repositories:
-- Edit the `sensitive-keywords.txt` file
-- Each keyword or sentence should rest on its own line <br/><br/>
-
-Example:
-
-        username
-        password
-        key
-        hidden secret
-
-<br></br>
-
-- **This tool searches for case-insensitive matching strings**
-- Keyword `"UsER"` will be converted to -> `"user"` at runtime
-- Similarly, the target's files will be scraped then converted to lower-case for matching against your desired keywords
-- Special characters are accepted <br/><br/>
-
-<hr><br>
+        Positional flags:
+            -u / --user         Target GitHub username or organisation (required)
+            -t / --token        GitHub personal access token (strongly recommended — raises rate limit from 60 to 5000 req/hr)
+            -k / --keywords     Path to a newline-separated list of sensitive keywords to search for
+            -e / --extensions   Path to a newline-separated list of file extensions to inspect (e.g. .py .env .json)
+            -o / --output       Optional path to write findings to a file (findings are always printed to stdout too)
+            --all-repos         Also include forked repositories (skipped by default)
 
 ## Sample Output
 <br>
 
-        (+) Scraping GitHub profile...
-
-        (+) Keyword "password" found at: https://github.com/michaellaoudis/Python/blob/main/Test-Target/Javascript-Target.js
-        (-) Extracted text:
-        "in in nunc. class aptent taciti username=michael password=laoudis sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. donec ullamcorper fringilla eros. fusce in sapien eu purus dapibus commodo. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. cras faucibus condimentum odio. sed ac ligula. aliquam at eros. etiam at ligula et tellus ullamcorper ultrices. in fermentum, lorem non cursus porttitor, diam urna accumsan lacus, sed interdum wisi nibh nec nisl."
-
-        (+) Keyword "key" found at: https://github.com/michaellaoudis/Python/blob/main/Test-Target/More-Fake-Creds.html
-        (-) Extracted text:
-        "donec ut est in lectus consequat consequat. key=michael123 etiam eget dui. aliquam erat volutpat. sed at lorem in nunc porta tristique. proin nec augue. quisque aliquam tempor magna. pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. nunc ac magna. maecenas odio dolor, vulputate vel, auctor ac, accumsan id, felis. pellentesque cursus 
-        sagittis felis."        
-
-        (+) Keyword "password" found at: https://github.com/michaellaoudis/Python/blob/main/Test-Target/PHP-Target.php
-        (-) Extracted text:
-        "in in nunc. class aptent taciti username=mich43l password=l40udi$ sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. donec ullamcorper fringilla eros. fusce in sapien eu purus dapibus commodo. cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. cras faucibus condimentum odio. sed ac ligula. aliquam at eros. etiam at ligula et tellus ullamcorper ultrices. in fermentum, lorem non cursus porttitor, diam urna accumsan lacus, sed interdum wisi nibh nec nisl."
+        python3 github_scraper.py -u michaellaoudis -k keywords.txt -e file-types.txt
+        
+        [*] GitHub API rate limit: 60/60 requests remaining
+        [*] Loaded 4 keywords: ['key', 'secret', 'password', 'user']
+        [*] Loaded 4 extensions: ['.py', '.js', '.php', '.html']
+        
+        [*] Fetching repositories for: michaellaoudis
+        
+        [*] Found 4 repositories to scan.
+        
+        [>] Scanning: michaellaoudis/Bug-Bounty-Reports  (branch: master)
+            [*] 0 file(s) match extension filter out of 1 total.
+        [>] Scanning: michaellaoudis/Python  (branch: main)
+            [*] 1458 file(s) match extension filter out of 3288 total.
+        
+        [+] Keyword match: password
+            Repo : michaellaoudis/Python
+            File : Javascript-Target.js  (line 26)
+            URL  : https://github.com/michaellaoudis/Python/blob/main/Test-Target/Javascript-Target.js
+            Text : password=laoudis
 
