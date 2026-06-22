@@ -34,7 +34,7 @@ A GitHub personal access token is recommended for 5,000 requests/hour to query t
 
 ## Usage
 
-    python3 gitHub_scraper.py -u <username> [options]
+    python3 github_scraper.py -u <username> [options]
 
 | Flag | Description |
 |------|-------------|
